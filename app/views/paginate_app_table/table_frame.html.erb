@@ -1,0 +1,16 @@
+<% url = url_for(params.merge(:action=>"table_#{app_table_config.action}_page"))
+   url = URI.unescape(url)
+   url.gsub!(/&amp;/, "&")%>
+<%= javascript_tag %{
+  Event.observe(window, 'load', Paginate.Page.create);
+} %>
+<div id="<%=app_table_config.identify%>" class="paginate" model="<%=app_table_config.name%>" url="<%=url%>" >
+  <%= render :partial => '/paginate_app_table/buttons' %>
+  <div class="paginate_table" selection="<%= app_table_config.selection_mode  %>">
+    <%= render :partial => '/paginate_app_table/container_header', :locals=>{:sortby => sortby} %>
+    <div class="scroll_container">
+      <%= render :partial => '/paginate_app_table/container_body' %>
+    </div>
+  </div>
+  <%= render :partial => '/paginate_app_table/status' %>
+</div>

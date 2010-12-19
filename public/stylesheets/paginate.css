@@ -1,0 +1,126 @@
+div.paginate{
+  text-align: left;
+}
+div.paginate td{
+  font-size: 12px;
+}
+.paginate ul.toolbar,
+.paginate ul.statusbar{
+  margin:0;
+  padding: 10px;
+  list-style-type:none;
+  width:100%;
+}
+.paginate ul.toolbar li,
+.paginate ul.statusbar li{
+  display: inline-table
+}
+.paginate table.fixed_header,
+.paginate div.scroll_container,
+.paginate table.scrollable_body,
+.paginate table.statusbar{
+  width: 100%;
+}
+.paginate div.scroll_container{
+  height: 300px;
+  overflow-y: scroll;
+  overflow-x: none;
+}
+.paginate_table th{
+  text-align: left;
+  font-size: 13px;
+  color:black;
+  vertical-align: middle;
+  padding: 5px 0px;
+}
+.paginate_table th.sortable{
+  color:blue;
+  background: no-repeat left center;
+}
+.paginate_table th.sortable span{
+  cursor: pointer;
+}
+.paginate_table th.asc{
+  background-image: url(/images/paginate/up.gif);
+  padding-left: 15px;
+}
+.paginate_table th.desc{
+  background-image: url(/images/paginate/down.gif);
+  padding-left: 15px;
+}
+
+.paginate_table .odd, .paginate .even{
+    height: 20px;
+}
+.paginate_table tr.even{
+  background-color: #f6f6f6;
+}
+.paginate_table tr.odd{
+}
+.paginate_table tr.selected{
+  background-color: #99ff99;
+}
+
+.paginate_table td{
+  border-bottom:1px solid #EEEEEE;
+}
+.paginate_table tr.group{
+  background-color: #ccc;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+.paginate_table tr.group span.name{
+  font-weight: bold;
+  color: #3333ff;
+}
+.paginate_table tr td.name{
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+.paginate table.toolbar td.tool_button{
+  padding : 0 10px;
+}
+.paginate table.toolbar td.tool_button button{
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+.paginate table.toolbar td.tool_button span.text{
+  margin-bottom: 4px;  
+  font-size: 12px;
+  font-weight:700;
+}
+.paginate table.toolbar td.enabled span.text{
+  color : #000000;
+}
+.paginate table.toolbar td.disabled span.text{
+  color : #cccccc;
+}
+.paginate table.scrollable_body td.grouped{
+  color : #A3A3A3;
+}
+
+.paginate table.toolbar img.more{
+   background-image: url("/images/paginate/more.png");
+   background-repeat: no-repeat;
+   width: 15px;
+}
+.paginate table.toolbar ul.more{
+   border: 1px solid #98B1C4;
+   position: absolute;
+   z-index: 100;
+   list-style: none;
+   margin: 0;
+   padding: 5px;
+   background-color: #F3F3F3;
+}
+.paginate table.toolbar ul.more li{
+   clear: left;
+   float:left;
+   line-height:20px;
+   margin:0;
+   padding:0;
+   position:relative;
+   z-index:1;
+}

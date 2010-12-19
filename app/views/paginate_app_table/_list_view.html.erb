@@ -1,0 +1,3 @@
+<%= render :partial=>"/paginate_app_table/container_record", :collection => records, :as=> :record, :locals=>{:sortby=>sortby} %>
+__paginator_spliter__
+<%=render :partial => "/paginate_app_table/paginator", :locals=>{:page=>records}%>
