@@ -212,7 +212,7 @@ Paginate.Table = Class.create({
     this.page.fire("selectionChanged", this.selectionModel.selection);
   },
 
-/**
+  /**
    * 抓取额外的页
    */
   fetch : function(pageIndex){
@@ -258,7 +258,7 @@ Paginate.Table = Class.create({
       new Ajax.Request(url,{
         asynchronous:true,
         method: 'GET',
-        onSuccess: this.replacePage.bindAsEventListener(this),
+        onSuccess: this.updatePage.bindAsEventListener(this),
         onFailure: this.fetchFailure.bindAsEventListener(this),
         onComplete: this.fetchComplete.bindAsEventListener(this)
       });
@@ -274,7 +274,14 @@ Paginate.Table = Class.create({
    * 获取到一页数据之后，将数据加入HTML DOM树中，并让Paginate.Table也进行管理
    */
   updatePage : function(response){
-    this.page.clearError(); //清除错误，计数归零
+    this.page.clearError();
+    //更新Column模型的状态
+    this.columnModel.refresh();
+    //清空选择
+    this.selectionModel.checkNone();
+    //清空GroupBar
+    this.groupModel.clear();
+
     var result = response.responseText.split(/__paginator_spliter__/mi)
     this.tbody.innerHTML = result.first(); //将内容插入
     this.paginator.innerHTML = result.last();
@@ -293,25 +300,6 @@ Paginate.Table = Class.create({
     this.page.properties.perPage = parseInt(response.getHeader("per_page"));
     //发出事件
     this.page.fire("fetchSuccess", this.page.properties);
-  },
-
-  /**
-   * 点击列头进行排序时，对原有的分组/行等记录进行清除，并把AJAX响应结果插入
-   */
-  replacePage : function(response){
-    this.page.clearError();
-    //更新Column模型的状态
-    this.columnModel.refresh();
-    //清空选择
-    this.selectionModel.checkNone();
-    //清空GroupBar
-    this.groupModel.clear();
-    //先删除所有的行
-    this.tbody.select("tr").each(function(tr){
-      tr.remove();
-    });
-    //再把最新的结果加进去
-    this.updatePage(response);
   },
 
   /**

@@ -1,7 +1,3 @@
-<% if key = records.key_by_hash( current_group )%>
-  <% sub_records = records.delete(key) %>
-  <%= render :partial=>"/paginate_app_table/container_record", :collection => sub_records, :as=> :record,:locals=>{:sortby=>sortby} %>
-<% end %>
 
 <% records.each do |group, sub_records| %>
   <tr class="expanded group" name="<%=group.hash%>">
